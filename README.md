@@ -58,3 +58,88 @@ export default defineConfig({
 import HelloWorld from '@components/HelloWorld.vue'
 ```
 
+# 安装VueRouter
+```bash
+npm install vue-router@4
+```
+## 定义router
+创建`src/router/router.ts`，作为一个小测试
+
+```ts
+import { createWebHashHistory, createRouter } from 'vue-router'
+import HelloWorld from '@components/HelloWorld.vue'
+
+export default createRouter({
+  history: createWebHashHistory(),
+  routes: [
+    {
+      path: '/',
+      redirect: '/helloworld'
+    }, {
+      path: '/helloworld',
+      component: HelloWorld
+    }, {
+      path: '/test/:msg',
+      component: HelloWorld
+    }
+  ]
+})
+```
+## 应用路由
+`src/main.ts`
+```diff
+import { createApp } from 'vue'
+import App from './App.vue'
++import router from '@router/router'
+
+-createApp(App).mount('#app')
++createApp(App).use(router).mount('#app')
+```
+
+`import router from '@router/router`会报错，修改`tsconfig.json`
+
+```diff
+{
+  "compilerOptions": {
+    ...省略一些...
++    "baseUrl": "./",
++    "allowJs": true,
++    "paths": {
++      "@/*": ["src/*"],
++      "@components/*": ["src/components/*"],
++      "@composable/*": ["src/composable/*"],
++      "@router/*": ["src/router/*"],
++      "@store/*": ["src/store/*"],
++      "@assets/*": ["src/assets/*"],
++    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+}
+```
+
+其实只有你使用ts的时候编辑器无法解析，所以像`components`和`assets`这两个路径其实没必要配置，它们从不使用ts。`allowJs`也不必配置。
+
+## 测试路由
+`App.vue`
+```vue
+<script setup lang="ts">
+
+</script>
+
+<template>
+  <router-link to="/helloworld">Hello</router-link>
+  <router-link to="/test/TestMessage">Test</router-link>
+  <router-view></router-view>
+</template>
+
+```
+
+`HelloWorld.vue`
+```vue
+<template>
+  <!--省略-->
+  <h2>{{ $route.params.msg }}</h2>
+  <!--省略-->
+</template>
+```
+
