@@ -143,3 +143,84 @@ import App from './App.vue'
 </template>
 ```
 
+# 安装Vuex
+```bash
+npm install vuex@next --save
+```
+
+# 安装AntDV
+```bash
+npm install ant-design-vue@next --save
+```
+
+## 测试
+```vue
+<script setup lang="ts">
+// 导入组件
+import { DatePicker } from 'ant-design-vue'
+// 导入CSS
+import 'ant-design-vue/dist/antd.css'
+</script>
+
+<template>
+  <date-picker></date-picker>
+</template>
+```
+
+## 按需加载样式
+之前使用手动导入css的办法，麻烦不说，而且会增大我们最终打包应用的体积
+
+```
+➜  DogeAdmin git:(master) ✗ npm run build
+
+> dogeadmin@0.0.0 build
+> vue-tsc --noEmit && vite build
+
+vite v2.6.10 building for production...
+✓ 990 modules transformed.
+dist/index.html                  0.48 KiB
+dist/assets/index.bd8fb172.js    1.43 KiB / gzip: 0.79 KiB
+dist/assets/index.3be3a084.css   548.48 KiB / gzip: 64.96 KiB
+dist/assets/vendor.18cab0ca.js   349.05 KiB / gzip: 113.47 KiB
+```
+
+使用[vite-plugin-style-import](https://www.npmjs.com/package/vite-plugin-style-import)实现按需加载。
+
+```bash
+npm i vite-plugin-style-import
+```
+
+```diff
+ import { defineConfig } from 'vite'
+ import vue from '@vitejs/plugin-vue'
+ import { resolve } from 'path'
++import styleImport from 'vite-plugin-style-import'
+ 
+ // https://vitejs.dev/config/
+ export default defineConfig({
+-  plugins: [vue()],
++  plugins: [
++    vue(),
++    styleImport({
++      libs: [{
++        libraryName: 'ant-design-vue',
++        esModule: true,
++        resolveStyle: (name) => `ant-design-vue/es/${name}/style/css`
++      }]
++    })
++  ],
+...
+```
+
+现在无需再次导入css了
+`HelloWorld.vue`
+```vue
+<script setup lang="ts">
+import { DatePicker } from 'ant-design-vue'
+</script>
+
+<template>
+  <h2>{{ $route.params.msg }}</h2>
+  <date-picker></date-picker>
+</template>
+```
