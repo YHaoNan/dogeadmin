@@ -1,8 +1,28 @@
-enum LoginFormComponents{
+enum LoginFormComponents {
   AccountLoginForm,
   PhoneLoginForm,
   QRCodeLoginForm,
-  RegisterForm
+  RegisterForm,
+}
+enum Gender {
+  MALE,
+  FEMALE,
 }
 
-export { LoginFormComponents }
+enum Role {
+  NORMAL,
+  SUPER_ACCOUNT,
+  ROOT,
+}
+
+class User {
+  constructor(
+    readonly account: string,
+    readonly username: string,
+    readonly sex: Gender,
+    readonly role: Role,
+    readonly avater: string
+  ) {}
+}
+
+export { LoginFormComponents, Role, Gender, User };

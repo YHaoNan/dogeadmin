@@ -20,5 +20,6 @@ export default {
     default: "Wrong data...",
     accountLength: "Account cannot shorter then 6 character",
     passwordLength: "Password cannot shorter than 6 character",
+    userNotFound: "User not found",
   },
 };

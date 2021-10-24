@@ -34,7 +34,7 @@
     </div>
 
     <ButtonGroup class="form-btn-group" direction="column">
-      <a-button class="form-btn" type="primary">{{
+      <a-button class="form-btn" type="primary" @click="callLogin">{{
         $t("account.login")
       }}</a-button>
       <a-button
@@ -50,13 +50,30 @@
 import { ref } from "vue";
 import ButtonGroup from "@components/ButtonGroup.vue";
 import { LoginFormComponents } from "@/global/global";
+import useLogin from "@composable/login";
 import "@css/login-form.css";
 import useValiCode from "@composable/valicode";
 
 const phoneNumber = ref("");
 const { valicode, validesc, inSendingInterval, sendValiCode } = useValiCode();
+const { loginByPhone } = useLogin();
 
-const emit = defineEmits(["component-change"]);
+const callLogin = () => {
+  loginByPhone(phoneNumber.value, valicode.value).then(
+    (user) => {
+      emit("login-successed", user);
+    },
+    (err) => {
+      emit("login-failed", err);
+    }
+  );
+};
+
+const emit = defineEmits([
+  "component-change",
+  "login-successed",
+  "login-failed",
+]);
 </script>
 
 <style scoped></style>

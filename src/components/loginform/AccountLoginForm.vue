@@ -30,7 +30,7 @@
     </div>
 
     <ButtonGroup class="form-btn-group" direction="column">
-      <a-button class="form-btn" type="primary">{{
+      <a-button class="form-btn" type="primary" @click="callLogin">{{
         $t("account.login")
       }}</a-button>
       <a-button
@@ -66,6 +66,7 @@
 import { ref, computed } from "vue";
 import ButtonGroup from "@components/ButtonGroup.vue";
 import { LoginFormComponents } from "@/global/global";
+import useLogin from "@composable/login";
 import ValidationBar from "@components/ValidationBar.vue";
 import "@css/login-form.css";
 
@@ -76,7 +77,23 @@ const rememberMe = ref(false);
 const isAccountHasError = computed(() => account.value.length < 6);
 const isPasswordHasError = computed(() => password.value.length < 6);
 
-const emit = defineEmits(["component-change"]);
+const { login } = useLogin();
+const callLogin = function () {
+  login(account.value, password.value).then(
+    (user) => {
+      emit("login-successed", user);
+    },
+    (err) => {
+      emit("login-failed", err);
+    }
+  );
+};
+
+const emit = defineEmits([
+  "component-change",
+  "login-successed",
+  "login-failed",
+]);
 </script>
 
 <style scoped></style>
