@@ -1,16 +1,26 @@
 <template>
   <div>
     <h2>{{ $t("account.login") }}</h2>
-    <a-input
-      class="form-input"
-      v-model:value="account"
-      :placeholder="$t('account.account')"
-    />
-    <a-input-password
-      class="form-input"
-      v-model:value="password"
-      :placeholder="$t('account.password')"
-    />
+    <ValidationBar
+      :error-message="$t('errors.accountLength')"
+      :has-error="isAccountHasError"
+    >
+      <a-input
+        class="form-input"
+        v-model:value="account"
+        :placeholder="$t('account.account')"
+      />
+    </ValidationBar>
+    <ValidationBar
+      :error-message="$t('errors.passwordLength')"
+      :has-error="isPasswordHasError"
+    >
+      <a-input-password
+        class="form-input"
+        v-model:value="password"
+        :placeholder="$t('account.password')"
+      />
+    </ValidationBar>
 
     <div class="remember-me-and-forget">
       <a-checkbox v-model:checked="rememberMe">{{
@@ -53,14 +63,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import ButtonGroup from "@components/ButtonGroup.vue";
 import { LoginFormComponents } from "@/global/global";
+import ValidationBar from "@components/ValidationBar.vue";
 import "@css/login-form.css";
 
 const account = ref("123456");
 const password = ref("123456");
 const rememberMe = ref(false);
+
+const isAccountHasError = computed(() => account.value.length < 6);
+const isPasswordHasError = computed(() => password.value.length < 6);
 
 const emit = defineEmits(["component-change"]);
 </script>

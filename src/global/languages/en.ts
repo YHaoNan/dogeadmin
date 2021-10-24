@@ -16,4 +16,9 @@ export default {
     cannotReceiveValiCode: "Cannot receive valicode?",
     return: "Return",
   },
+  errors: {
+    default: "Wrong data...",
+    accountLength: "Account cannot shorter then 6 character",
+    passwordLength: "Password cannot shorter than 6 character",
+  },
 };

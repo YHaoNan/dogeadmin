@@ -16,4 +16,9 @@ export default {
     cannotReceiveValiCode: "无法接收验证码?",
     return: "返回",
   },
+  errors: {
+    default: "数据错误",
+    accountLength: "账号最少由6个字符组成",
+    passwordLength: "密码最少由6个字符组成",
+  },
 };
