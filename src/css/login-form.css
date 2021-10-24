@@ -1,0 +1,30 @@
+.form-input {
+  height: 30px;
+  margin-bottom: 14px;
+}
+
+.remember-me-and-forget {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.form-btn {
+  margin-bottom: 10px;
+}
+.form-btn:first-child {
+  margin-bottom: 20px;
+}
+
+.login-methods {
+  margin-top: 10px;
+}
+.login-methods img {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  margin-right: 10px;
+  margin-left: 10px;
+}

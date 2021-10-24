@@ -11,14 +11,14 @@
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "baseUrl": "./",
-    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@composable/*": ["src/composable/*"],
       "@router/*": ["src/router/*"],
       "@store/*": ["src/store/*"],
-      "@assets/*": ["src/assets/*"],
+      "@assets/*": ["src/assets/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
