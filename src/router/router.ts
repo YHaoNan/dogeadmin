@@ -19,6 +19,7 @@ export default createRouter({
     {
       path: "/main",
       component: AppRoot,
+      redirect: "/main/dashboard",
       children: subroutes,
     },
   ],

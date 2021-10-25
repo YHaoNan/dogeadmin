@@ -1,16 +1,20 @@
 <template>
-  <div>
+  <div id="dashboard">
     <h1>DASHBOARD</h1>
-    <h3>{{ dashStore.state.visitCount }}</h3>
+    <a-card>
+      <VisitsChartPage></VisitsChartPage>
+    </a-card>
   </div>
 </template>
 
 <script setup lang="ts">
-import { dashStateKey } from "@/store/dashStore";
-import { useStore } from "vuex";
-
-const dashStore = useStore(dashStateKey);
-console.log(dashStore.state);
+import VisitsChartPage from "../public/VisitsChartPage.vue";
 </script>
 
-<style scoped></style>
+<style scoped>
+#dashboard {
+  padding: 20px;
+  background-color: #f0f2f5;
+  height: 100%;
+}
+</style>

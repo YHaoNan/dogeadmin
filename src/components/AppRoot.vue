@@ -9,7 +9,6 @@ import { userStateKey } from "@/store/userStore";
 import { useStore } from "vuex";
 
 const userStore = useStore(userStateKey);
-console.log(userStore.state);
 </script>
 
 <style scoped></style>
