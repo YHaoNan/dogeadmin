@@ -1,4 +1,5 @@
 export default {
+  languageName: "简体中文",
   account: {
     login: "登录",
     loginByPhone: "手机登录",

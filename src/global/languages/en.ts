@@ -1,4 +1,5 @@
 export default {
+  languageName: "English",
   account: {
     login: "Login",
     loginByPhone: "Use Phone",

@@ -4,13 +4,21 @@
       <img src="@assets/imgs/doge-icon-21.png" alt="" />
       <h2 class="web-title">DOGE Admin</h2>
     </div>
+    <LanguageSelector class="language-selector" />
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import LanguageSelector from "@components/LanguageSelector.vue";
+</script>
 
 <style scoped>
+.simple-top-bar {
+  display: flex;
+  flex-direction: row;
+}
 .icon-and-title {
+  flex: 1;
   display: flex;
   flex-direction: row;
   align-items: center;

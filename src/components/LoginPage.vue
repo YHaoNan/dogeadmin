@@ -24,6 +24,7 @@
 </template>
 
 <script setup lang="ts">
+import LanguageSelector from "@components/LanguageSelector.vue";
 import SimpleTopBar from "@components/SimpleTopBar.vue";
 import useLoginForm from "@composable/loginform";
 import useLogin from "@/composable/login";
