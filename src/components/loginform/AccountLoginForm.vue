@@ -66,7 +66,7 @@
 import { ref, computed } from "vue";
 import ButtonGroup from "@components/ButtonGroup.vue";
 import { LoginFormComponents } from "@/global/global";
-import useLogin from "@composable/login";
+import { login } from "@/global/utils/login_utils";
 import ValidationBar from "@components/ValidationBar.vue";
 import "@css/login-form.css";
 
@@ -77,7 +77,6 @@ const rememberMe = ref(false);
 const isAccountHasError = computed(() => account.value.length < 6);
 const isPasswordHasError = computed(() => password.value.length < 6);
 
-const { login } = useLogin();
 const callLogin = function () {
   login(account.value, password.value).then(
     (user) => {

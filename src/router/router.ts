@@ -1,5 +1,6 @@
 import { createWebHashHistory, createRouter } from "vue-router";
-import LoginPage from "@/components/LoginPage.vue";
+import LoginPage from "@components/LoginPage.vue";
+import AppRoot from "@components/AppRoot.vue";
 
 export default createRouter({
   history: createWebHashHistory(),
@@ -11,6 +12,10 @@ export default createRouter({
     {
       path: "/login",
       component: LoginPage,
+    },
+    {
+      path: "/main",
+      component: AppRoot,
     },
   ],
 });

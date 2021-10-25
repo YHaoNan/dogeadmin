@@ -1,38 +1,25 @@
-import { User, Role, Gender } from "@/global/global";
-
-const defaultUsers: { [index: string]: User } = {
-  "123456#123456": new User("123456", "Yudoge", Gender.MALE, Role.ROOT, ""),
-  "superrr#123456": new User(
-    "superrr",
-    "SUPERMAN",
-    Gender.MALE,
-    Role.SUPER_ACCOUNT,
-    ""
-  ),
-};
+import { ref } from "vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+import { userStateKey } from "@/store/userStore";
+import { delaySetRef } from "@/global/utils/reactive-utils";
+import { User } from "@/global/global";
 
 export default function useLogin() {
-  const login = function (account: string, password: string): Promise<User> {
-    return new Promise<User>((resolve, reject) => {
-      if (defaultUsers.hasOwnProperty(`${account}#${password}`)) {
-        resolve(defaultUsers[`${account}#${password}`]);
-      } else {
-        reject("no this user");
-      }
-    });
+  const router = useRouter();
+  const userStore = useStore(userStateKey);
+  const isLoginFailedAlertShow = ref(false);
+  const onLoginSuccessed = (user: User) => {
+    userStore.commit("setUser", user);
+    console.log("登录成功", user);
+    router.push("/main");
   };
 
-  const loginByPhone = function (
-    phoneNumber: string,
-    valiCode: string
-  ): Promise<User> {
-    return new Promise<User>((resolve, reject) => {
-      reject("no this phone");
-    });
+  const onLoginFailed = (err: string) => {
+    console.log("登陆失败", err);
+    isLoginFailedAlertShow.value = true;
+    delaySetRef(isLoginFailedAlertShow, false, 3000);
   };
 
-  return {
-    login,
-    loginByPhone,
-  };
+  return { onLoginSuccessed, onLoginFailed, isLoginFailedAlertShow };
 }

@@ -50,13 +50,12 @@
 import { ref } from "vue";
 import ButtonGroup from "@components/ButtonGroup.vue";
 import { LoginFormComponents } from "@/global/global";
-import useLogin from "@composable/login";
+import { loginByPhone } from "@/global/utils/login_utils";
 import "@css/login-form.css";
 import useValiCode from "@composable/valicode";
 
 const phoneNumber = ref("");
 const { valicode, validesc, inSendingInterval, sendValiCode } = useValiCode();
-const { loginByPhone } = useLogin();
 
 const callLogin = () => {
   loginByPhone(phoneNumber.value, valicode.value).then(

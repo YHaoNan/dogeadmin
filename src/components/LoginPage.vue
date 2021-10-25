@@ -2,7 +2,7 @@
   <div id="login-ui-container">
     <a-alert
       class="alert"
-      v-if="isAlertShow"
+      v-if="isLoginFailedAlertShow"
       type="error"
       :message="t('errors.userNotFound')"
       banner
@@ -24,28 +24,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { delaySetRef } from "@/global/utils";
-
 import SimpleTopBar from "@components/SimpleTopBar.vue";
-import useFormLogin from "@composable/loginform";
+import useLoginForm from "@composable/loginform";
+import useLogin from "@/composable/login";
 import { useI18n } from "vue-i18n";
-import { User } from "@/global/global";
 
-const { currentComponent, onComponentChange } = useFormLogin();
+const { currentComponent, onComponentChange } = useLoginForm();
 
+const { onLoginSuccessed, onLoginFailed, isLoginFailedAlertShow } = useLogin();
+
+// I18N
 const { t } = useI18n();
-const isAlertShow = ref(false);
-
-const onLoginSuccessed = (user: User) => {
-  console.log("登录成功", user);
-};
-
-const onLoginFailed = (err: string) => {
-  console.log("登陆失败", err);
-  isAlertShow.value = true;
-  delaySetRef(isAlertShow, false, 3000);
-};
 </script>
 
 <style scoped>
