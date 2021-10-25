@@ -29,3 +29,7 @@ input::-webkit-inner-spin-button {
   left: 50%;
   transform: translateX(-50%);
 }
+
+.anticon {
+  font-size: 1.2em;
+}

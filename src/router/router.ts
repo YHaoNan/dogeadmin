@@ -1,6 +1,9 @@
 import { createWebHashHistory, createRouter } from "vue-router";
 import LoginPage from "@components/LoginPage.vue";
 import AppRoot from "@components/AppRoot.vue";
+import subroutes from "./subrouter";
+
+// import DashBoard from "@components/subui/DashBoard.vue";
 
 export default createRouter({
   history: createWebHashHistory(),
@@ -16,6 +19,7 @@ export default createRouter({
     {
       path: "/main",
       component: AppRoot,
+      children: subroutes,
     },
   ],
 });

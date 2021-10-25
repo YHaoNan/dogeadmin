@@ -64,10 +64,10 @@
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import ButtonGroup from "@components/ButtonGroup.vue";
+import ButtonGroup from "@/components/public/ButtonGroup.vue";
 import { LoginFormComponents } from "@/global/global";
 import { login } from "@/global/utils/login_utils";
-import ValidationBar from "@components/ValidationBar.vue";
+import ValidationBar from "@/components/public/ValidationBar.vue";
 import "@css/login-form.css";
 
 const account = ref("123456");

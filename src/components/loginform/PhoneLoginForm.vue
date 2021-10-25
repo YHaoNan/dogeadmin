@@ -48,7 +48,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import ButtonGroup from "@components/ButtonGroup.vue";
+import ButtonGroup from "@/components/public/ButtonGroup.vue";
 import { LoginFormComponents } from "@/global/global";
 import { loginByPhone } from "@/global/utils/login_utils";
 import "@css/login-form.css";

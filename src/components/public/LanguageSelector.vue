@@ -6,7 +6,6 @@
   >
     <TranslationOutlined
       class="language-selector-icon"
-      :style="{ fontSize: '24px' }"
       @click="isSelectorOpen = !isSelectorOpen"
     />
   </GeneralSelector>
@@ -16,7 +15,7 @@
 import { TranslationOutlined } from "@ant-design/icons-vue";
 import { ref } from "vue";
 import { useI18n } from "vue-i18n";
-import GeneralSelector from "@components/GeneralSelector.vue";
+import GeneralSelector from "@/components/public/GeneralSelector.vue";
 
 defineProps({
   color: {

@@ -1,8 +1,10 @@
 <template>
-  <div>{{ userStore.state.user?.username }}</div>
+  <MainTopBar></MainTopBar>
+  <router-view></router-view>
 </template>
 
 <script setup lang="ts">
+import MainTopBar from "./public/MainTopBar.vue";
 import { userStateKey } from "@/store/userStore";
 import { useStore } from "vuex";
 
