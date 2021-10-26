@@ -20,6 +20,7 @@ export default function useVisitcountByMonthChart(containerName: string) {
     );
     chart.scale("visitCount", {
       nice: true,
+      alias: "访问人数",
     });
 
     chart.tooltip({

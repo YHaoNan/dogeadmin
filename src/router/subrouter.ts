@@ -1,21 +1,24 @@
-import DashBoard from "@components/subui/DashBoard.vue";
+import SubPage from "@/components/subui/SubPage.vue";
+import AnalysePage from "@components/subui/dashboard/AnalysePage.vue";
+import WorkBench from "@components/subui/dashboard/WorkBench.vue";
+import NotImplementYet from "@components/subui/NotImplementYet.vue";
 
 export default [
   {
     path: "/main/dashboard",
-    name: "Dashboard",
-    // redirect: "/main/dashboard/analyse",
-    component: DashBoard,
+    name: "routes.dashboard",
+    redirect: "/main/dashboard/analyse",
+    component: SubPage,
     children: [
       {
         path: "/main/dashboard/analyse",
-        name: "分析页",
-        component: DashBoard,
+        name: "routes.analyse",
+        component: AnalysePage,
       },
       {
         path: "/main/dashboard/workbench",
-        name: "工作台",
-        component: DashBoard,
+        name: "routes.workbench",
+        component: WorkBench,
       },
     ],
   },
@@ -23,22 +26,22 @@ export default [
     path: "/main/docs",
     name: "外部页面",
     // redirect: "/main/docs/project-doc",
-    component: DashBoard,
+    component: SubPage,
     children: [
       {
         path: "/main/docs/project-doc",
         name: "项目文档(内嵌)",
-        component: DashBoard,
+        component: NotImplementYet,
       },
       {
         path: "/main/docs/antvue-doc",
         name: "antVue文档(内嵌)",
-        component: DashBoard,
+        component: NotImplementYet,
       },
       {
         path: "/main/docs/project-doc-outlink",
         name: "项目文档(外链)",
-        component: DashBoard,
+        component: NotImplementYet,
       },
     ],
   },

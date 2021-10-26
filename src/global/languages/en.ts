@@ -23,4 +23,9 @@ export default {
     passwordLength: "Password cannot shorter than 6 character",
     userNotFound: "User not found",
   },
+  routes: {
+    dashboard: "Dashboard",
+    analyse: "Analyse",
+    workbench: "Workbench",
+  },
 };

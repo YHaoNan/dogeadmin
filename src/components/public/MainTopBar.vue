@@ -42,9 +42,10 @@ import LanguageSelector from "./LanguageSelector.vue";
 import SmallUserComponent from "./SmallUserComponent.vue";
 import useBreadCrumbWithRoute from "@/composable/breadcrumb";
 import useFullScreen from "@/composable/fullscreen";
-import SmallUserComponent1 from "./SmallUserComponent.vue";
+import { useI18n } from "vue-i18n";
 
-const { currentRoutes } = useBreadCrumbWithRoute();
+const { t } = useI18n();
+const { currentRoutes } = useBreadCrumbWithRoute(t);
 const { isFullScreen, toggleFullScreen } = useFullScreen();
 </script>
 

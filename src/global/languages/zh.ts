@@ -23,4 +23,9 @@ export default {
     passwordLength: "密码最少由6个字符组成",
     userNotFound: "找不到该用户",
   },
+  routes: {
+    dashboard: "Dashboard",
+    analyse: "分析页",
+    workbench: "工作台",
+  },
 };

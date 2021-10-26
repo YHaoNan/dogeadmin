@@ -1,7 +1,7 @@
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 
-export default function useBreadCrumbWithRoute() {
+export default function useBreadCrumbWithRoute(t: (name: string) => string) {
   const route = useRoute();
 
   interface AntDVRoutes {
@@ -21,14 +21,14 @@ export default function useBreadCrumbWithRoute() {
       // 先将一层中主要的那个路由拿出来
       antDvRoutes[index - 1] = {
         path: r.path,
-        breadcrumbName: r.name ? r.name.toString() : "UnknownPage",
+        breadcrumbName: r.name ? t(r.name.toString()) : "UnknownPage",
       };
       // 处理子路由，如果有子路由就将子路由添加进去
       if (r.children) {
         antDvRoutes[index - 1].children = r.children.map((c) => {
           return {
             path: c.path,
-            breadcrumbName: c.name ? c.name.toString() : "UnknownPage",
+            breadcrumbName: c.name ? t(c.name.toString()) : "UnknownPage",
           };
         });
       }
