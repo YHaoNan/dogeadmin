@@ -1,6 +1,50 @@
 # DogeAdmin
 
-Vite2 + Vue3 + TypeScript + Vuex + VueRouter + Ant Design Vue
+抄袭 Vben 界面的垃圾后台管理
+
+技术：
+Vite2 + Vue3 + TypeScript + Vuex + VueRouter + Ant Design Vue + I18N
+
+实现：
+
+- 登录页
+- Dashboard
+  - 分析页
+  - 工作台
+- 文档页
+- 快速导航面包屑
+- 快速导航标签页
+- 快速导航 Sider（小屏幕时自动变成 Drawer）
+- 多语言
+- 网页全屏（兼容性差）
+
+很多地方很简陋，只是一个练习项目
+
+截图
+
+![sc.png](./sc.png)
+
+# 开始
+
+```bash
+git clone https://github.com/YHaoNan/dogeadmin.git
+cd [项目根目录]
+npm run dev
+```
+
+# 项目 src 结构
+
+```
+assets 资源
+components 组件
+composable 可组合项
+css 公用样式
+global 公用变量、接口、类型以及多语言配置
+router 路由
+store vuex存储
+```
+
+下面是一个简单的使用本项目的技术栈创建项目的引导
 
 # 创建项目
 
@@ -361,3 +405,5 @@ t("account.phone");
 更多有关 I18N 的内容可以参考：[Vue I18n - Guide](https://vue-i18n.intlify.dev/guide/#javascript)
 
 推荐的 VSCode 插件：[vue-swift-i18n](https://marketplace.visualstudio.com/items?itemName=RichieChoo.vue-swift-i18n)
+
+#
