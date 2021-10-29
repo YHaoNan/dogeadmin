@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 function openFullScreen() {
   if (document.body.requestFullscreen) {
@@ -20,6 +20,11 @@ export default function useFullScreen() {
     if (!isFullScreen.value) openFullScreen();
     else closeFullScreen();
   };
+  onMounted(() => {
+    document.onfullscreenchange = function () {
+      isFullScreen.value = document.fullscreen;
+    };
+  });
   return {
     isFullScreen,
     toggleFullScreen,
