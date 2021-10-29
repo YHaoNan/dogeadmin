@@ -1,38 +1,24 @@
 import { ref } from "vue";
 
-function getFullScreen() {
-  return (
-    document.fullscreenElement ||
-    document.mozFullScreenElement ||
-    document.webkitFullscreenElement
-  );
-}
 function openFullScreen() {
-  if (document.requestFullscreen) {
-    document.requestFullscreen();
-  } else if (document.mozRequestFullScreen) {
-    document.mozRequestFullScreen();
-  } else if (document.webkitRequestFullscreen) {
-    document.webkitRequestFullscreen();
-  } else if (document.msRequestFullscreen) {
-    document.msRequestFullscreen();
+  if (document.body.requestFullscreen) {
+    document.body.requestFullscreen();
   }
 }
 function closeFullScreen() {
   if (document.exitFullscreen) {
     document.exitFullscreen();
-  } else if (document.mozCancelFullScreen) {
-    document.mozCancelFullScreen();
-  } else if (document.webkitExitFullscreen) {
-    document.webkitExitFullscreen();
   }
 }
 
 export default function useFullScreen() {
-  const isFullScreen = ref(getFullScreen());
+  window.onresize = function () {
+    isFullScreen.value = document.fullscreenElement != undefined;
+  };
+  const isFullScreen = ref(document.fullscreen);
   const toggleFullScreen = function () {
-    isFullScreen.value = !isFullScreen.value;
-    // if (isFullScreen.value) openFullScreen(); else closeFullScreen();
+    if (!isFullScreen.value) openFullScreen();
+    else closeFullScreen();
   };
   return {
     isFullScreen,

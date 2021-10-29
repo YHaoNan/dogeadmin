@@ -1,7 +1,11 @@
 <template>
   <a-tabs
+    class="page-tabs"
     v-model:activeKey="activePaneKey"
     type="editable-card"
+    :tabBarStyle="{ margin: 0 }"
+    size="small"
+    hideAdd
     @edit="onPaneEdit"
     @change="onPaneChanged"
   >
@@ -20,4 +24,8 @@ import usePageTabs from "@/composable/pagetabs";
 const { activePaneKey, panes, onPaneChanged, onPaneEdit } = usePageTabs();
 </script>
 
-<style scoped></style>
+<style scoped>
+.page-tabs {
+  background-color: white;
+}
+</style>

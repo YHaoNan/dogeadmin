@@ -2,6 +2,7 @@ import SubPage from "@/components/subui/SubPage.vue";
 import AnalysePage from "@components/subui/dashboard/AnalysePage.vue";
 import WorkBench from "@components/subui/dashboard/WorkBench.vue";
 import NotImplementYet from "@components/subui/NotImplementYet.vue";
+import { DashboardOutlined, MobileOutlined } from "@ant-design/icons-vue";
 
 export default [
   {
@@ -9,6 +10,7 @@ export default [
     name: "routes.dashboard",
     redirect: "/main/dashboard/analyse",
     component: SubPage,
+    icon: DashboardOutlined,
     children: [
       {
         path: "/main/dashboard/analyse",
@@ -25,8 +27,9 @@ export default [
   {
     path: "/main/docs",
     name: "外部页面",
-    // redirect: "/main/docs/project-doc",
+    redirect: "/main/docs/project-doc",
     component: SubPage,
+    icon: MobileOutlined,
     children: [
       {
         path: "/main/docs/project-doc",

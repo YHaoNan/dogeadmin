@@ -1,3 +1,5 @@
+import { RouteRecordName } from "vue-router";
+
 enum LoginFormComponents {
   AccountLoginForm,
   PhoneLoginForm,
@@ -25,4 +27,18 @@ class User {
   ) {}
 }
 
-export { LoginFormComponents, Role, Gender, User };
+interface MenuItem {
+  title: string;
+  key: string;
+  icon?: string;
+  children?: MenuItem[];
+}
+
+interface Route {
+  name: RouteRecordName | null | undefined;
+  path: string;
+  children?: Route[];
+  [propName: string]: any;
+}
+
+export { LoginFormComponents, Role, Gender, User, MenuItem, Route };

@@ -1,7 +1,6 @@
 import { reactive, ref, watch } from "vue";
-import { RouteRecordName, useRoute } from "vue-router";
+import { RouteRecordName, useRoute, useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
-import router from "@/router/router";
 interface Pane {
   title: string;
   key: string;
@@ -30,6 +29,7 @@ function getRouteName(route: Route): string {
 }
 export default function usePageTabs() {
   const route = reactive(useRoute());
+  const router = useRouter();
   const { t } = useI18n();
 
   // 初始化，以当前的路由初始化一个Pane
